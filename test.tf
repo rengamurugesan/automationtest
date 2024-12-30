@@ -148,3 +148,11 @@ resource "azurerm_automation_schedule" "weekly_schedule" {
 }
 
 
+
+
+# Key Lifecycle Meta-Arguments
+
+# lifecycle { prevent_destroy = true }
+# lifecycle { create_before_destroy = true }
+# lifecycle { ignore_changes = [tags, network_interface_ids] }
+# lifecycle { replace_triggered_by = [ azurerm_storage_account.example, azurerm_virtual_network.example ] }
