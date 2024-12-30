@@ -109,4 +109,42 @@ resource "azurerm_automation_source_control" "source_control" {
   branch              = "master"
 }
 
+resource "azurerm_automation_schedule" "monthly_schedule" {
+  name                    = "tf-month-schedule-001"
+  automation_account_name = "test12"
+  resource_group_name     = "rg-vms"
+  frequency               = "Month"
+  interval                = 1
+  timezone                = "UTC"
+  start_time              = "2028-04-15T18:00:15+02:00"
+  description             = "This is an example schedule"
+  monthly_occurrence {
+    day        = "Monday"
+    occurrence = 4
+  }
+}
+resource "azurerm_automation_schedule" "monthly_schedule1" {
+  name                    = "tf-month-days-schedule-002"
+  automation_account_name = "test12"
+  resource_group_name     = "rg-vms"
+  frequency               = "Month"
+  interval                = 1
+  timezone                = "UTC"
+  start_time              = "2028-04-15T18:00:15+02:00"
+  description             = "This is an example schedule"
+  month_days              = [1, 3, 5] 
+}
+
+resource "azurerm_automation_schedule" "weekly_schedule" {
+  name                    = "tf-week-schedule"
+  automation_account_name = "test12"
+  resource_group_name     = "rg-vms"
+  frequency               = "Week"
+  interval                = 1
+  timezone                = "UTC"
+  start_time              = "2028-04-15T18:00:15+02:00"
+  description             = "This is an example schedule"
+  week_days               = ["Friday"]
+}
+
 
